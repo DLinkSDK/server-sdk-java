@@ -39,7 +39,7 @@ Step 2: Obtain the SDK
 <dependency>
   <groupId>dev.deeplink.sdk</groupId>
   <artifactId>server-sdk-java</artifactId>
-  <version>1.9.3</version>
+  <version>2.0.1</version>
 </dependency>
 
 ```
