@@ -7,7 +7,7 @@ https://click.deeplink.dev/click/<appid>?pid=__PID__&dl_siteid=__CSITE__&c=__CAM
 
 - **DLink S2S Impression Event API**
 ```
-https://impression.deeplink.dev/impressions/<appid>?pid=bytedanceglobal_int&dl_siteid=__CSITE__&c=__CAMPAIGN_NAME__&dl_channel=__PLACEMENT__&dl_c_id=__CAMPAIGN_ID__&dl_adset=__AID_NAME__&dl_adset_id=__AID__&dl_ad=__CID_NAME__&dl_ad_id=__CID__&dl_ad_type=__CTYPE__&dl_viewthrough_lookback=24h&clickid=__Clickid__&advertising_id=__GAID__&idfa=__IDFA__&os=__OS__&dl_ip=__IP__&dl_ua=__UA__&dl_lang=__SL__&redirect=false
+https://impression.deeplink.dev/impressions/<appid>?pid=__PID__&dl_siteid=__CSITE__&c=__CAMPAIGN_NAME__&dl_channel=__PLACEMENT__&dl_c_id=__CAMPAIGN_ID__&dl_adset=__AID_NAME__&dl_adset_id=__AID__&dl_ad=__CID_NAME__&dl_ad_id=__CID__&dl_ad_type=__CTYPE__&dl_viewthrough_lookback=24h&clickid=__Clickid__&advertising_id=__GAID__&idfa=__IDFA__&os=__OS__&dl_ip=__IP__&dl_ua=__UA__&dl_lang=__SL__&redirect=false
 ```
 
 The event selected in the DLink console and the corresponding metric names in the media advertising platform are as follows:
