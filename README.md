@@ -3,7 +3,6 @@
 This article explains how to send event data from an advertiser's server to Dlink to measure mobile events that occur outside of the app.
 ![s2s](s2s.png "s2s.png")
 
-
 ###  Server-to-Server (S2S) Event API for Mobile Devices
 The Dlink platform attributes and logs mobile app events sent by Dlink SDKs and APIs, allowing you to use the S2S API to report events that occur outside of your application (such as a renewal completed by a user on your website).
 ### Dlink will populate the following information into S2S events:
