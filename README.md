@@ -38,7 +38,7 @@ Step 2: Obtain the SDK
 <dependency>
   <groupId>dev.deeplink.sdk</groupId>
   <artifactId>server-sdk-java</artifactId>
-  <version>2.0.1</version>
+  <version>2.2.1</version>
 </dependency>
 
 ```
@@ -85,5 +85,14 @@ Step 4: Use the SDK
         Result<EventReportResponse> result = CONTEXT.execute(request);
         System.out.println("result: " + JSONUtil.toJsonStr(result));
     }
-
+    
+    @Test
+    public void testUtmConfigQuery() {
+        UtmConfigQueryRequest request = new UtmConfigQueryRequest();
+        request.setUtmCode("tt_app");
+        //tiktok app required
+        request.setMediaAccountId("{tiktok Account Id}");
+        final Result<UtmConfigResponse> result = CONTEXT.execute(request);
+        System.out.println("result: " + JSONUtil.toJsonStr(result.getData()));
+    }
 ```
