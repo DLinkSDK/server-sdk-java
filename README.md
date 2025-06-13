@@ -90,8 +90,7 @@ Step 4: Use the SDK
     public void testUtmConfigQuery() {
         UtmConfigQueryRequest request = new UtmConfigQueryRequest();
         request.setUtmCode("tt_app");
-        //tiktok app required
-        request.setMediaAccountId("{tiktok Account Id}");
+
         final Result<UtmConfigResponse> result = CONTEXT.execute(request);
         System.out.println("result: " + JSONUtil.toJsonStr(result.getData()));
     }
