@@ -38,7 +38,7 @@ Step 2: Obtain the SDK
 <dependency>
   <groupId>dev.deeplink.sdk</groupId>
   <artifactId>server-sdk-java</artifactId>
-  <version>2.2.1</version>
+  <version>2.2.7</version>
 </dependency>
 
 ```
@@ -61,7 +61,7 @@ Step 4: Use the SDK
         EventReportRequest request = new EventReportRequest();
         request.setActionSource(ActionSourceEnum.website.getCode());
         request.setEventId(String.valueOf(new Date().getTime()));
-        request.setEventType(EventTypeEnum.AddToCartEvent.getCode());
+        request.setEventType(EventTypeEnum.SubscribeEvent.getCode());
         request.setEventSourceUrl("https://www.example.com/product/1");
         request.setEventTime(new Date().getTime());
 
@@ -73,6 +73,9 @@ Step 4: Use the SDK
             .setProductName("Product Name")));
         customData.setCurrency("USD");
         customData.setValue(100F);
+        customData.setSubscribeDay(7L);
+        customData.setSubscribeStartTime(1760116727934L);
+        customData.setSubscribeEndTime(1760635127000L);
         request.setCustomData(customData);
 
         // User information
