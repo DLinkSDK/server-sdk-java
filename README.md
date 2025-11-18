@@ -62,12 +62,12 @@ Step 4: Use the SDK
         request.setActionSource(ActionSourceEnum.website.getCode());
         request.setEventId(String.valueOf(new Date().getTime()));
         request.setEventType(EventTypeEnum.SubscribeEvent.getCode());
-        request.setEventSourceUrl("https://www.example.com/product/1");
+        request.setDeepLinkId("CE436EE1-EE4F-4A88-AF88-3F20BF8DA0B7-CE24DC61D5-4A0134B601");
         request.setEventTime(new Date().getTime());
 
         // Order
-        EventReportRequest.OrderCustom customData = new EventReportRequest.OrderCustom();
-        customData.setContents(Arrays.asList(new EventReportRequest.OrderCustom.Content()
+        EventReportRequest.OrderCustom customData = new EventReportItem.OrderCustom();
+        customData.setContents(Arrays.asList(new EventReportItem.OrderCustom.Content()
             .setProductId("1")
             .setQuantity(1L)
             .setProductName("Product Name")));
@@ -79,7 +79,7 @@ Step 4: Use the SDK
         request.setCustomData(customData);
 
         // User information
-        EventReportRequest.UserData userData = new EventReportRequest.UserData();
+        EventReportRequest.UserData userData = new EventReportItem.UserData();
         userData.setExternalId("uid");
         userData.setPhones(Collections.singletonList("123456789"));
         userData.setEmails(Collections.singletonList("123456789@gmail.com"));
