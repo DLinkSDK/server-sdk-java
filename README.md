@@ -38,7 +38,7 @@ Step 2: Obtain the SDK
 <dependency>
   <groupId>dev.deeplink.sdk</groupId>
   <artifactId>server-sdk-java</artifactId>
-  <version>2.2.7</version>
+  <version>2.2.8</version>
 </dependency>
 
 ```
@@ -73,6 +73,7 @@ Step 4: Use the SDK
             .setProductName("Product Name")));
         customData.setCurrency("USD");
         customData.setValue(100F);
+        customData.setFirstSubscribe(false);
         customData.setSubscribeDay(7L);
         customData.setSubscribeStartTime(1760116727934L);
         customData.setSubscribeEndTime(1760635127000L);
