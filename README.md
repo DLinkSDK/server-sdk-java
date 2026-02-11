@@ -38,7 +38,7 @@ Step 2: Obtain the SDK
 <dependency>
   <groupId>dev.deeplink.sdk</groupId>
   <artifactId>server-sdk-java</artifactId>
-  <version>2.2.8</version>
+  <version>2.5.3</version>
 </dependency>
 
 ```
@@ -97,5 +97,13 @@ Step 4: Use the SDK
 
         final Result<UtmConfigResponse> result = CONTEXT.execute(request);
         System.out.println("result: " + JSONUtil.toJsonStr(result.getData()));
+    }
+
+    @Test
+    public void shortLinkRequest() {
+        ShortLinkRequest shortLinkRequest = new ShortLinkRequest();
+        shortLinkRequest.setShortLinks(Collections.singletonList("https://click.deeplink.dev/click/1b37d2c909466000?pid=test&key=582a2c96f8394c3dae2a5a3aa7ddd096&c=test&dl_c_id=111&dl_adset=111&dl_adset_id=22&dl_ad=33&dl_ad_id=111&dl_ad_type=images&clickid=1213asdasdas&advertising_id=d015c5eb-1588-4156-97f3-c40a7ff19833&idfa=d015c5eb-1588-4156-97f3-c40a7ff19833"));
+        Result<Map<String,String>> result = CONTEXT.execute(shortLinkRequest);
+        System.out.println("result: " + JSONUtil.toJsonStr(result) );
     }
 ```
