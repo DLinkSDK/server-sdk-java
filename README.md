@@ -13,9 +13,9 @@ The Dlink platform attributes and logs mobile app events sent by Dlink SDKs and 
 For key events (like payments), you can use the Server-to-Server Event API for integration. To send events via API, please ask your developers to complete the relevant setup according to the Server-to-Server Event API.
 
 # Integrating the SDK
-Step 1: Obtain `Account ID` and `Dev Token`
+Step 1: Obtain `App Code` and `API Token`
 
-Register an account at https://console.dlink.cloud. After creating an app on the platform, obtain the corresponding `Account ID` and `Dev Token` for App Setting.
+Register an account at https://console.dlink.cloud. After creating an app on the platform, obtain the corresponding `App Code` and `API Token` for App Setting.
 
 Step 2: Obtain the SDK
 
