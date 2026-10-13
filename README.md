@@ -38,7 +38,7 @@ Step 2: Obtain the SDK
 <dependency>
   <groupId>dev.deeplink.sdk</groupId>
   <artifactId>server-sdk-java</artifactId>
-  <version>2.5.3</version>
+  <version>2.5.6</version>
 </dependency>
 
 ```
@@ -46,12 +46,14 @@ Step 2: Obtain the SDK
 Step 3: Initialize the SDK
 
 ```java
- ApiContext CONTEXT = ApiContext.create("{Account ID}", "{Dev Token}")
+ ApiContext CONTEXT = ApiContext.create("{App Code}", "{API Token}")
             .setApiUrl("https://api.deeplink.dev/");
 
 ```
 
 Step 4: Use the SDK
+
+[Tests Example: src/test/java/dev/deeplink/sdk/EventReportTests.java](src/test/java/dev/deeplink/sdk/EventReportTests.java)
 
 ```java
 
