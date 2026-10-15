@@ -56,51 +56,54 @@ Step 4: Use the SDK
 [Tests Example: src/test/java/dev/deeplink/sdk/EventReportTests.java](src/test/java/dev/deeplink/sdk/EventReportTests.java)
 
 ```java
-
-   
     @Test
-    public void testEventReport() {
-        EventReportRequest request = new EventReportRequest();
-        request.setActionSource(ActionSourceEnum.website.getCode());
-        request.setEventId(String.valueOf(new Date().getTime()));
-        request.setEventType(EventTypeEnum.SubscribeEvent.getCode());
-        request.setDeepLinkId("CE436EE1-EE4F-4A88-AF88-3F20BF8DA0B7-CE24DC61D5-4A0134B601");
-        request.setEventTime(new Date().getTime());
-
-        // Order
-        EventReportRequest.OrderCustom customData = new EventReportItem.OrderCustom();
-        customData.setContents(Arrays.asList(new EventReportItem.OrderCustom.Content()
-            .setProductId("1")
-            .setQuantity(1L)
-            .setProductName("Product Name")));
-        customData.setCurrency("USD");
-        customData.setValue(100F);
-        customData.setFirstSubscribe(false);
-        customData.setSubscribeDay(7L);
-        customData.setSubscribeStartTime(1760116727934L);
-        customData.setSubscribeEndTime(1760635127000L);
-        request.setCustomData(customData);
-
-        // User information
-        EventReportRequest.UserData userData = new EventReportItem.UserData();
-        userData.setExternalId("uid");
-        userData.setPhones(Collections.singletonList("123456789"));
-        userData.setEmails(Collections.singletonList("123456789@gmail.com"));
-        request.setUserData(userData);
-
-        Result<EventReportResponse> result = CONTEXT.execute(request);
-        System.out.println("result: " + JSONUtil.toJsonStr(result));
+    @DisplayName("PurchaseEvent — 购买")
+    public void testPurchaseEvent() {
+        EventReportRequest request = base(EventTypeEnum.PurchaseEvent, "ORD-");
+        request.setCustomData(single("sku_001", "TestProduct", 299F, 1L, "USD", 299F));
+        execute(request);
     }
+
+    private static EventReportRequest base(EventTypeEnum type, String eventIdPrefix) {
+          long now = System.currentTimeMillis();
+          EventReportRequest request = new EventReportRequest();
+          request.setEventId(eventIdPrefix + now);
+          request.setEventTime(now);
+          request.setEventType(type.getCode());
+          request.setActionSource(ActionSourceEnum.website.getCode());
+          request.setDeepLinkId(DEEP_LINK_ID);
+          request.setAccessUserId(ACCESS_USER_ID);
+          request.setAppData(new EventReportItem.AppData()
+              .setOsVersion("10/11")
+              .setPlatform("ios")
+              .setLocale("en-US")
+              .setTimezone("GMT-4:00"));
+          return request;
+      }
+  
+      private static EventReportItem.OrderCustom single(
+          String productId, String productName, float unitPrice, long qty, String currency, float totalValue
+      ) {
+          EventReportItem.OrderCustom data = new EventReportItem.OrderCustom();
+          data.setCurrency(currency);
+          data.setValue(totalValue);
+          data.setContents(Collections.singletonList(
+              new EventReportItem.OrderCustom.Content()
+                  .setProductId(productId)
+                  .setProductName(productName)
+                  .setQuantity(qty)
+                  .setValue(unitPrice)
+          ));
+          return data;
+      }
+  
+      private static void execute(EventReportRequest request) {
+          Result<EventReportResponse> result = CONTEXT.execute(request);
+          System.out.println(request.getEventType() + " => " + JSONUtil.toJsonStr(result));
+          assertNotNull(result);
+          assertTrue(Boolean.TRUE.equals(result.getSuccess()), result.getMessage());
+      }
     
-    @Test
-    public void testUtmConfigQuery() {
-        UtmConfigQueryRequest request = new UtmConfigQueryRequest();
-        request.setUtmCode("tt_app");
-
-        final Result<UtmConfigResponse> result = CONTEXT.execute(request);
-        System.out.println("result: " + JSONUtil.toJsonStr(result.getData()));
-    }
-
     @Test
     public void shortLinkRequest() {
         ShortLinkRequest shortLinkRequest = new ShortLinkRequest();
